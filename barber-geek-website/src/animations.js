@@ -1,25 +1,13 @@
+// Animations are handled by AOS (Animate On Scroll) library
+// configured in App.jsx. GSAP is kept as a dependency for future use.
+// If you need custom GSAP animations, add specific, element-targeted code here.
+
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Initialize animations when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-
-  // Hero Section Animations
-  gsap.from('#hero .heroContent', {
-    opacity: 0,
-    y: 100,
-    duration: 1.2,
-    ease: 'power3.out',
-    scrollTrigger: {
-      trigger: '#hero',
-      start: 'top 80%',
-      end: 'top 30%',
-      toggleActions: 'play reverse play reverse'
-    }
-  });
-
+export const initAnimations = () => {
   gsap.from('#hero .heroTitle', {
     opacity: 0,
     x: -50,
@@ -282,5 +270,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
-});
+};
