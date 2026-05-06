@@ -1,0 +1,258 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: var(--spacing-md);
+}
+
+.modal {
+  background-color: var(--secondary-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: modalSlideIn var(--transition-normal);
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modalTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 24px;
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  border-radius: 4px;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.closeButton:hover:not(:disabled) {
+  color: var(--text-primary);
+  background-color: var(--tertiary-dark);
+}
+
+.closeButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.bookingForm {
+  padding: var(--spacing-lg);
+}
+
+.formGroup {
+  margin-bottom: var(--spacing-lg);
+}
+
+.formRow {
+  gap: var(--spacing-lg);
+}
+
+.formLabel {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.formInput,
+.formSelect {
+  width: 100%;
+  padding: var(--spacing-md);
+  background-color: var(--tertiary-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-size: 16px;
+  transition: all var(--transition-fast);
+}
+
+.formInput:focus,
+.formSelect:focus {
+  outline: none;
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+
+.formInput::placeholder {
+  color: var(--text-secondary);
+}
+
+.formSelect {
+  cursor: pointer;
+}
+
+.formActions {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xl);
+}
+
+.cancelButton {
+  flex: 1;
+  padding: var(--spacing-md) var(--spacing-lg) !important;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+.submitButton {
+  flex: 2;
+  padding: var(--spacing-md) var(--spacing-lg) !important;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all var(--transition-normal);
+}
+
+.submitButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--accent-orange), var(--accent-gold));
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Success Modal */
+.successModal {
+  text-align: center;
+  padding: var(--spacing-2xl);
+}
+
+.successContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.successIcon {
+  font-size: 64px;
+  animation: successPop var(--transition-normal);
+}
+
+@keyframes successPop {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.successTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.successText {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.successContent .closeButton {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-xl) !important;
+  font-weight: 600;
+  border-radius: 6px;
+  min-width: 120px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .modalOverlay {
+    padding: var(--spacing-sm);
+  }
+  
+  .modal {
+    max-height: 95vh;
+  }
+  
+  .modalHeader {
+    padding: var(--spacing-md);
+  }
+  
+  .modalTitle {
+    font-size: 20px;
+  }
+  
+  .bookingForm {
+    padding: var(--spacing-md);
+  }
+  
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .formActions {
+    flex-direction: column;
+  }
+  
+  .cancelButton,
+  .submitButton {
+    width: 100%;
+  }
+  
+  .successModal {
+    padding: var(--spacing-lg);
+  }
+  
+  .successIcon {
+    font-size: 48px;
+  }
+  
+  .successTitle {
+    font-size: 20px;
+  }
+  
+  .successText {
+    font-size: 14px;
+  }
+}

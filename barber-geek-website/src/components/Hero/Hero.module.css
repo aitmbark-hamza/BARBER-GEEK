@@ -1,0 +1,156 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 100px 0 60px;
+}
+
+/* --- SLIDER STYLES --- */
+.sliderContainer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.activeSlide {
+  opacity: 1;
+}
+
+.vignetteOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+  z-index: 1;
+}
+
+.noiseOverlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* --- HERO CONTENT --- */
+.heroContent {
+  position: relative;
+  z-index: 3;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.heroContent.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.heroText {
+  max-width: 600px;
+}
+
+.topLabel {
+  display: block;
+  color: #4da6ff;
+  font-size: 11px;
+  letter-spacing: 6px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.heroTitle {
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  color: #fff;
+  letter-spacing: -1.5px;
+  margin-bottom: 25px;
+}
+
+.accentTitle {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+  background: linear-gradient(180deg, #4da6ff, #0066cc);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.heroSubtitle {
+  max-width: 500px;
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.8;
+  margin-bottom: 45px;
+}
+
+/* --- BUTTONS --- */
+.heroButtons {
+  display: flex;
+  gap: 15px;
+}
+
+.primaryBtn {
+  background: #0066cc;
+  color: #fff;
+  border: none;
+  padding: 18px 35px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primaryBtn:hover {
+  background: #004d99;
+  transform: translateY(-3px);
+}
+
+.secondaryBtn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 18px 35px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.secondaryBtn:hover {
+  border-color: #4da6ff;
+  background: rgba(77, 166, 255, 0.05);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .heroContent {
+    padding: 0 25px;
+  }
+  .heroButtons {
+    flex-direction: column;
+    width: 100%;
+  }
+  .primaryBtn, .secondaryBtn { 
+    width: 100%; 
+    text-align: center;
+  }
+}

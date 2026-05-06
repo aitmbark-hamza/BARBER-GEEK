@@ -1,0 +1,223 @@
+.portfolio {
+  position: relative;
+  background-color: #020817; 
+  background-image: linear-gradient(rgba(2, 8, 23, 0.85), rgba(2, 8, 23, 0.85)), 
+                    url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1600');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  padding: 100px 0;
+  overflow: hidden;
+}
+
+.sectionBgOverlay {
+  position: absolute;
+  inset: 0;
+  background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png'); 
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  z-index: 5;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- HEADER --- */
+.header { text-align: center; margin-bottom: 50px; }
+.topLabel { color: #0066cc; letter-spacing: 6px; font-size: 10px; font-weight: 900; }
+.title { font-size: clamp(2.5rem, 5vw, 4.5rem); color: #fff; font-weight: 900; margin-top: 10px; }
+.accent { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.3); }
+
+/* --- FILTERS --- */
+.filterBar { 
+  display: flex; 
+  justify-content: center; 
+  gap: 20px; 
+  margin-bottom: 50px; 
+  flex-wrap: wrap;
+}
+.filterBtn {
+  background: none; border: none; color: rgba(255,255,255,0.4);
+  font-size: 10px; font-weight: 800; letter-spacing: 2px; cursor: pointer;
+  transition: 0.3s; padding-bottom: 5px; border-bottom: 2px solid transparent;
+}
+.filterBtn.active { color: #fff; border-bottom: 2px solid #0066cc; }
+
+/* --- GRID --- */
+.grid {
+  display: grid;
+  /* Daba grid ghatkon adaptive: 3 f l-kbir, 2 f l-mobile */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 15px;
+}
+
+.item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 6px;
+  background: #111;
+}
+
+.imageWrapper {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease, filter 0.5s ease;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 15px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.itemTitle {
+  color: #fff; font-size: 14px; font-weight: 700; letter-spacing: 1px;
+  transform: translateY(10px); transition: transform 0.4s ease;
+}
+
+.viewBtn {
+  color: #0066cc; font-size: 9px; font-weight: 900; letter-spacing: 2px;
+  margin-top: 5px; transform: translateY(10px); transition: transform 0.5s ease;
+}
+
+.item:hover .img { transform: scale(1.1); }
+.item:hover .overlay { opacity: 1; }
+.item:hover .itemTitle, .item:hover .viewBtn { transform: translateY(0); }
+
+/* --- INSTAGRAM FOOTER --- */
+.footer {
+  text-align: center;
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footerText {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.instaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 15px 30px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: 0.3s ease;
+}
+
+.instaButton:hover {
+  background: #fff;
+  color: #020817;
+  transform: translateY(-3px);
+}
+
+/* --- LIGHTBOX (DIK LI KATHAL KBIRA) --- */
+.lightbox {
+  position: fixed; 
+  inset: 0; 
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  cursor: pointer;
+  padding: 20px;
+}
+
+.bigImg {
+  max-width: 100%; 
+  max-height: 85vh; 
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  animation: scaleIn 0.3s ease-out;
+}
+
+.close {
+  position: absolute; 
+  top: 25px; 
+  right: 25px; 
+  color: #fff;
+  font-size: 24px; 
+  font-weight: 300;
+  background: rgba(255,255,255,0.1);
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close:hover {
+  background: #0066cc;
+  transform: rotate(90deg);
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* --- RESPONSIVE (MOBILE) --- */
+@media (max-width: 768px) {
+  /* Hna dert 2 columns f ster wahd */
+  .grid { 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px;
+  }
+  
+  .container { padding: 0 10px; }
+  
+  .title { font-size: 2.2rem; }
+  
+  .overlay { padding: 10px; }
+  
+  .itemTitle { font-size: 12px; }
+  
+  /* L-Lightbox f mobile */
+  .close {
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Idrara sghira bzzaf (optional) */
+  .filterBar { gap: 10px; }
+  .filterBtn { font-size: 9px; }
+}

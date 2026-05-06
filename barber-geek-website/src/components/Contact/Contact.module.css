@@ -1,0 +1,183 @@
+.contact {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* --- HERO SECTION --- */
+.heroSection {
+  position: relative;
+  height: 750px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8%;
+}
+
+.mapBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 78%; 
+  height: 580px;
+  background: #fdf6eb; 
+  z-index: 1;
+  filter: grayscale(0.1) brightness(0.95);
+  overflow: visible;
+}
+
+.mapBackground iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.bgText {
+  position: absolute;
+  bottom: -50px;
+  left: 40px;
+  font-size: clamp(80px, 12vw, 150px);
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.04);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+/* --- FLOATING CARD --- */
+.floatingCard {
+  position: relative;
+  z-index: 10;
+  background: #f9f7f2; /* Matches source image card color */
+  padding: 60px 50px;
+  width: 480px;
+  box-shadow: 25px 25px 80px rgba(0,0,0,0.06);
+  margin-top: 80px;
+}
+
+.cardTitle {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 45px;
+  letter-spacing: -1.5px;
+  color: #222;
+}
+
+.inputGroup {
+  position: relative;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.inputGroup input, .inputGroup textarea {
+  width: 100%;
+  padding: 12px 30px 12px 0;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #333;
+}
+
+.inputIcon {
+  position: absolute;
+  right: 0;
+  top: 12px;
+  color: #aaa;
+  font-size: 16px;
+}
+
+.sendBtn {
+  margin-top: 20px;
+  background: #252525;
+  color: #fff;
+  border: none;
+  padding: 20px 35px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sendBtn:hover {
+  background: #000;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* --- FOOTER SECTION --- */
+.footerContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 120px 50px;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1fr;
+  gap: 60px;
+}
+
+.colLabel {
+  color: #d94126; /* Specific red accent from image */
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.colTitle {
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1.2;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  color: #1a1a1a;
+}
+
+.colHeader {
+  font-size: 13px;
+  font-weight: 900;
+  margin-bottom: 25px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #111;
+}
+
+.colContent, .socialItem {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 12px;
+  display: block;
+  text-decoration: none;
+  line-height: 1.6;
+}
+
+.socialList { display: flex; flex-direction: column; }
+.socialItem:hover {
+  color: #d94126;
+  padding-left: 5px;
+  transition: 0.2s;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .heroSection {
+    height: auto;
+    flex-direction: column;
+    padding: 0;
+  }
+  .mapBackground { width: 100%; position: relative; height: 450px; }
+  .floatingCard { width: 90%; margin: -80px auto 60px; padding: 40px; }
+  .footerGrid { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+
+@media (max-width: 600px) {
+  .footerGrid { grid-template-columns: 1fr; }
+  .colTitle { font-size: 26px; }
+}

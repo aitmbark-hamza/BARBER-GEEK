@@ -1,0 +1,179 @@
+.team {
+  padding: 80px 0;
+  background-color: #fff;
+  font-family: 'Inter', sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header Styles */
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.title {
+  font-size: 42px;
+  font-weight: 800;
+  color: #1a1a1a;
+  font-family: serif; /* Classic look like image_bf2c19.jpg */
+}
+
+.accent {
+  position: relative;
+  display: inline-block;
+}
+
+.accent::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #be9155; /* The gold underline */
+}
+
+/* Grid System */
+.teamGrid {
+  display: grid;
+  gap: 24px;
+  /* Desktop Default: 4 columns */
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Mobile Styling: 2 cards per row */
+@media (max-width: 768px) {
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .title { font-size: 32px; }
+}
+
+.teamCard {
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #f9f9f9;
+}
+
+.imageContainer {
+  position: relative;
+  aspect-ratio: 3 / 4; /* Maintains the tall portrait look */
+  overflow: hidden;
+}
+
+.memberImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.teamCard:hover .memberImage {
+  transform: scale(1.05);
+}
+
+/* Hover Overlay matching image_bf2c19.jpg */
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  /* Gold-Tan tint gradient */
+  background: linear-gradient(
+    to top,
+    rgba(190, 145, 85, 0.9) 0%, 
+    rgba(190, 145, 85, 0.45) 60%,
+    transparent 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.teamCard:hover .imageOverlay {
+  opacity: 1;
+}
+
+.overlayContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.memberName {
+  font-size: 18px;
+  color: #fff;
+  margin: 0;
+  font-weight: 700;
+}
+
+.memberRole {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 4px 0 0 0;
+}
+
+/* Small Instagram Circle Icon */
+.instagramCircle {
+  width: 34px;
+  height: 34px;
+  background-color: #1a1a1a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.teamCard:hover .instagramCircle {
+  transform: scale(1.1);
+}
+
+/* Modal Styling (Optional) */
+.memberModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modalContent {
+  background: #fff;
+  max-width: 800px;
+  width: 100%;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.modalGrid { display: flex; }
+.modalImage { width: 40%; }
+.modalImage img { width: 100%; height: 100%; object-fit: cover; }
+.modalInfo { padding: 40px; width: 60%; }
+.bookBtn { 
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: #1a1a1a;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .modalGrid { flex-direction: column; }
+  .modalImage, .modalInfo { width: 100%; }
+}
