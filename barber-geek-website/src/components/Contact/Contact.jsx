@@ -12,13 +12,13 @@ const Contact = () => {
 
   const contactInfo = [
     { title: 'Location', content: 'Angle Rue d’Anfa et Moulay Youssef, Casablanca 20000' },
-    { title: 'Phone', content: '+212 522-201234' },
+    { title: 'Phone', content: process.env.REACT_APP_PHONE },
     { title: 'Hours', content: 'Mon-Sat: 09am-7pm\nSun: Closed' }
   ];
 
   const socialLinks = [
     { name: 'Instagram', url: 'https://instagram.com/nexora.studio' },
-    { name: 'WhatsApp', url: 'https://wa.me/212600000000' },
+    { name: 'WhatsApp', url: process.env.REACT_APP_WHATSAPP_CONTACT },
     { name: 'TikTok', url: 'https://tiktok.com/@nexora.studio' },
     { name: 'Facebook', url: 'https://facebook.com/nexorastudio' }
   ];

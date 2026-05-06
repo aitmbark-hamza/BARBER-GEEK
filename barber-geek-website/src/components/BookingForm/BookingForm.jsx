@@ -51,8 +51,8 @@ const BookingForm = ({ closeBookingForm }) => {
       `Time: ${formData.time}%0A%0A` +
       `Please confirm this appointment.`;
 
-    // Replace with your actual WhatsApp number
-    const whatsappUrl = `https://wa.me/+15551234567?text=${message}`;
+    // Use environment variable for WhatsApp number
+    const whatsappUrl = `https://wa.me/${process.env.REACT_APP_WHATSAPP_NUMBER}?text=${message}`;
 
     // Open WhatsApp in new tab
     window.open(whatsappUrl, '_blank');
