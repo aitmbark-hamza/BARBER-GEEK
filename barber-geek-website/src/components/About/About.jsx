@@ -20,7 +20,9 @@ const About = () => {
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add(styles.reveal);
+        if (entry.isIntersecting) {
+          entry.target.classList.add(styles.reveal);
+        }
       });
     }, { threshold: 0.1 });
 
@@ -72,7 +74,7 @@ const About = () => {
           <div className={`${styles.imageComplex} ${styles.animate}`}>
             <div className={styles.sinceBox}>
                <span className={styles.sinceText}>since</span>
-               <h3 className={styles.sinceYear}>1998</h3>
+               <h3 className={styles.sinceYear}>2024</h3>
             </div>
             
             <div className={styles.mainImgWrapper}>

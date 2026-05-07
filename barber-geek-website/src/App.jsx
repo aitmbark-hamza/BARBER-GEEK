@@ -38,10 +38,10 @@ function App() {
     <div className={styles.app}>
       <Navbar openBookingForm={openBookingForm} />
       <Hero openBookingForm={openBookingForm} />
+      <About />
       <Services />
       <Portfolio />
       <Team />
-      <About />
       <Contact />
       
       {isBookingFormOpen && (
