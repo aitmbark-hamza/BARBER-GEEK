@@ -64,7 +64,7 @@ const Services = () => {
         </div>
 
         <div className={styles.footerNote}>
-           <div className={styles.mustacheIcon}></div>
+           <img src="/logo.png" alt="Barber Geek Logo" className={styles.footerLogo} />
            <p>We're dedicated to empowering men to look and feel fantastic.</p>
         </div>
       </div>

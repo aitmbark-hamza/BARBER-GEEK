@@ -157,11 +157,11 @@
   color: #444;
 }
 
-.mustacheIcon {
+.footerLogo {
   width: 40px;
-  height: 20px;
-  background: url('https://cdn-icons-png.flaticon.com/512/2610/2610484.png') no-repeat center;
-  background-size: contain;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 90%;
 }
 
 /* --- MOBILE --- */

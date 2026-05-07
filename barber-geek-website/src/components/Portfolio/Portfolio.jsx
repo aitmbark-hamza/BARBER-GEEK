@@ -6,15 +6,23 @@ const Portfolio = () => {
   const [selectedImg, setSelectedImg] = useState(null);
 
   const portfolioItems = [
-    { id: 1, category: 'haircut', title: 'Clean fade transformation', image: 'https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=1000' },
-    { id: 2, category: 'beard', title: 'Sharp beard line-up', image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1000' },
-    { id: 3, category: 'style', title: 'Precision haircut finish', image: 'https://images.unsplash.com/photo-1599351431247-f509403971c7?q=80&w=1000' },
-    { id: 4, category: 'haircut', title: 'Modern taper style', image: 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=1000' },
-    { id: 5, category: 'beard', title: 'Before / after grooming result', image: 'https://images.unsplash.com/photo-1622286330961-a345bc7846cf?q=80&w=1000' },
-    { id: 6, category: 'style', title: 'Fresh and clean look', image: 'https://images.unsplash.com/photo-1471466054146-e71bcc0d2bb2?q=80&w=1000' },
+    { id: 1, category: 'haircut', title: 'Clean fade transformation', image: 'image1.png' },
+    { id: 2, category: 'beard', title: 'Sharp beard line-up', image: 'imag2.png' },
+    { id: 3, category: 'style', title: 'Precision haircut finish', image: 'imag3.png' },
+    { id: 4, category: 'haircut', title: 'Modern taper style', image: 'imag4.png' },
+    { id: 5, category: 'beard', title: 'Before / after grooming result', image: 'imag5.png' },
+    { id: 6, category: 'style', title: 'Fresh and clean look', image: 'imag6.png' },
+    { 
+      id: 7, 
+      category: 'video', 
+      title: 'Featured Transformation', 
+      image: 'image1.png', // Thumbnail image
+      isVideo: true,
+      videoUrl: 'https://www.instagram.com/reel/DXnPDHYoKzD/?igsh=N2ozM3BlN3M4eTB4'
+    },
   ];
 
-  const filters = ['all', 'haircut', 'beard', 'style'];
+  const filters = ['all', 'haircut', 'beard', 'style', 'video'];
 
   const filteredItems = activeFilter === 'all' 
     ? portfolioItems 
@@ -45,12 +53,17 @@ const Portfolio = () => {
 
         <div className={styles.grid}>
           {filteredItems.map((item) => (
-            <div key={item.id} className={styles.item} onClick={() => setSelectedImg(item.image)}>
+            <div key={item.id} className={styles.item} onClick={() => item.isVideo ? window.open(item.videoUrl, '_blank') : setSelectedImg(item.image)}>
               <div className={styles.imageWrapper}>
                 <img src={item.image} alt={item.title} className={styles.img} />
+                {item.isVideo && (
+                  <div className={styles.videoBadge}>
+                    <span className={styles.playIcon}>▶</span>
+                  </div>
+                )}
                 <div className={styles.overlay}>
                   <h3 className={styles.itemTitle}>{item.title}</h3>
-                  <div className={styles.viewBtn}>VIEW IMAGE</div>
+                  <div className={styles.viewBtn}>{item.isVideo ? 'WATCH VIDEO' : 'VIEW IMAGE'}</div>
                 </div>
               </div>
             </div>

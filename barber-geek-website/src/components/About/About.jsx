@@ -104,7 +104,7 @@ const About = () => {
               className={styles.mainVideo}
               poster="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=2000"
             >
-              <source src="your-barber-video.mp4" type="video/mp4" />
+              <source src="/mainVideo.mp4" type="video/mp4" />
             </video>
             
             {!isPlaying && (

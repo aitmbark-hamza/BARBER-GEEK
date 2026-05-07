@@ -35,10 +35,11 @@
   cursor: pointer;
 }
 
-.logoIcon {
+.logoImage {
   width: 32px;
   height: 32px;
-  color: #4da6ff; /* Ice Blue */
+  object-fit: contain;
+  border-radius: 90%;
 }
 
 .logoTextWrapper {
@@ -248,7 +249,7 @@
     padding: 0 15px;
   }
   
-  .logoIcon {
+  .logoImage {
     width: 30px;
     height: 30px;
   }

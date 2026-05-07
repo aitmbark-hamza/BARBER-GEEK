@@ -37,10 +37,7 @@ const Navbar = ({ openBookingForm }) => {
           
           {/* LOGO AREA */}
           <div className={styles.logo} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-            <svg className={styles.logoIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L12 22M7 6L17 10M7 14L17 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1" opacity="0.3"/>
-            </svg>
+            <img src="/logo.png" alt="Barber Geek Logo" className={styles.logoImage} />
             <div className={styles.logoTextWrapper}>
                 <span className={styles.logoMain}>BARBER</span>
                 <span className={styles.logoSub}>GEEK</span>
