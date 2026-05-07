@@ -1,5 +1,4 @@
-import React from 'react';
-import { Camera } from 'lucide-react'; 
+import { Camera } from 'lucide-react';
 import styles from './Team.module.css';
 
 const Team = () => {
