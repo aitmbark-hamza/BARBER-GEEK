@@ -28,15 +28,15 @@ const Contact = () => {
       <div className={styles.heroSection}>
         <div className={styles.mapBackground}>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3324.5!2d-7.6!3d33.573!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBarber%20Geek!5e0!3m2!1sen!2sma!4v1620000000000"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Barber Geek Location"
-          ></iframe>
+  src="https://www.google.com/maps?q=BARBER+GEEK,+6+Avenue+Mohamed+Balafrej,+Casablanca,+Morocco&z=17&output=embed"
+  width="100%"
+  height="100%"
+  style={{ border: 0 }}
+  allowFullScreen
+  loading="lazy"
+  referrerPolicy="no-referrer-when-downgrade"
+  title="Barber Geek Location"
+/>
           
           <div 
             className={styles.bgText}
@@ -77,7 +77,7 @@ const Contact = () => {
           <div className={styles.footerCol}>
             <h4 className={styles.colHeader}>LOCATION</h4>
             <a 
-              href="https://maps.app.goo.gl/ZFEjUFcVMJ66J8JH8" 
+              href="https://www.google.com/maps/search/?api=1&query=BARBER+GEEK,+6+Avenue+Mohamed+Balafrej,+Casablanca,+Morocco" 
               target="_blank" 
               rel="noopener noreferrer"
               className={styles.colContent}
@@ -86,7 +86,7 @@ const Contact = () => {
               {contactInfo[0].content}
             </a>
             <a 
-              href="https://maps.app.goo.gl/ZFEjUFcVMJ66J8JH8" 
+              href="https://www.google.com/maps/search/?api=1&query=BARBER+GEEK,+6+Avenue+Mohamed+Balafrej,+Casablanca,+Morocco" 
               target="_blank" 
               rel="noopener noreferrer"
               className={styles.colContent}
