@@ -3,22 +3,24 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 2000;
-  padding: clamp(15px, 3vw, 25px) 0;
+  /* Z-index 3ali bzaf bach t-ghleb 3la l-maps w l-images */
+  z-index: 9999; 
+  padding: 20px 0;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
 }
 
 .scrolled {
   padding: 12px 0;
-  background: rgba(2, 8, 23, 0.85); /* Deep Navy Glass */
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(2, 8, 23, 0.95) !important;
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .container {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 25px;
 }
 
 .navContent {
@@ -27,273 +29,91 @@
   align-items: center;
 }
 
-/* --- LOGO STYLE --- */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer;
-}
+.logo { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+.logoImage { width: 32px; height: 32px; border-radius: 50%; }
+.logoMain { color: #fff; font-weight: 900; letter-spacing: 1px; font-size: 20px; }
+.logoSub { color: #4da6ff; font-size: 10px; letter-spacing: 3px; }
 
-.logoImage {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-  border-radius: 90%;
-}
+.navLinks { display: flex; align-items: center; gap: 30px; }
+.navLink { background: none; border: none; color: #fff; font-size: 12px; font-weight: 600; cursor: pointer; text-transform: uppercase; }
+.bookButton { background: #0066cc; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 800; font-size: 11px; }
 
-.logoTextWrapper {
-  display: flex;
-  flex-direction: column;
-  line-height: 0.9;
-}
-
-.logoMain {
-  font-size: 22px;
-  font-weight: 900;
-  letter-spacing: 2px;
-  color: #ffffff;
-}
-
-.logoSub {
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 5px;
-  color: #4da6ff;
-  text-transform: uppercase;
-}
-
-/* --- NAV LINKS --- */
-.navLinks {
-  display: flex;
-  align-items: center;
-  gap: 35px;
-}
-
-.navLink {
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.8);
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.navLink:hover {
-  color: #ffffff;
-}
-
-.navLink::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  width: 0;
-  height: 1.5px;
-  background: #0066cc;
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
-}
-
-.navLink:hover::after {
-  width: 100%;
-}
-
-.bookButton {
-  background: #0066cc;
-  color: #ffffff;
-  border: none;
-  padding: 12px 24px;
-  font-size: 11px;
-  letter-spacing: 2px;
-  font-weight: 800;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.bookButton:hover {
-  background: #0052a3;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
-}
-
-/* --- MOBILE TOGGLE --- */
+/* --- BURGER BUTTON --- */
 .burger {
   display: none;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 10px;
+  z-index: 10001;
+  padding: 5px;
 }
 
 .line {
-  width: 24px;
+  width: 25px;
   height: 2px;
   background: #fff;
   margin: 5px 0;
   transition: 0.3s;
 }
 
-/* --- MOBILE OVERLAY --- */
+.burger.active .line:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.active .line:nth-child(2) { opacity: 0; }
+.burger.active .line:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* --- MOBILE OVERLAY (Slah l-fara-gh l-k7el) --- */
 .mobileOverlay {
   position: fixed;
   top: 0;
-  left: 0;
   right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.98);
-  z-index: 998;
+  width: 100%;
+  height: 100vh;
+  background: #020817;
+  z-index: 10000;
   display: flex;
-  align-items: center;
   justify-content: center;
-  opacity: 0;
+  align-items: center;
+  
+  /* Kat-mne3 l-mchkil dyal l-zoom: */
   visibility: hidden;
-  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateX(100%); 
+  transition: all 0.4s ease-in-out;
 }
 
 .overlayOpen {
-  opacity: 1;
   visibility: visible;
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .mobileLinks {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 25px;
   align-items: center;
-  transform: translateY(20px);
-  transition: transform 0.3s ease;
-}
-
-.overlayOpen .mobileLinks {
-  transform: translateY(0);
 }
 
 .mobileNavLink {
   color: #fff;
   font-size: 24px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
   background: none;
   border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.mobileNavLink::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #0066cc;
-  transition: width 0.3s ease;
-}
-
-.mobileNavLink:hover::after {
-  width: 100%;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .mobileBookBtn {
   background: #0066cc;
-  color: #ffffff;
+  color: #fff;
+  padding: 15px 35px;
   border: none;
-  padding: 15px 30px;
-  font-size: 12px;
-  letter-spacing: 2px;
-  font-weight: 800;
   border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
+  font-weight: 800;
+  margin-top: 10px;
 }
 
-.mobileBookBtn:hover {
-  background: #0052a3;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
-}
-
+/* --- RESPONSIVE --- */
 @media (max-width: 900px) {
   .navLinks { display: none; }
   .burger { display: block; }
-  
-  .container {
-    padding: 0 20px;
-  }
-  
-  .logoTextWrapper {
-    .logoMain { font-size: 18px; }
-    .logoSub { font-size: 10px; }
-  }
-  
-  .bookButton {
-    display: none;
-  }
-}
-
-@media (max-width: 600px) {
-  .navbar {
-    padding: 15px 0;
-  }
-  
-  .container {
-    padding: 0 15px;
-  }
-  
-  .logoImage {
-    width: 30px;
-    height: 30px;
-  }
-  
-  .logoTextWrapper {
-    .logoMain { font-size: 16px; }
-    .logoSub { font-size: 9px; }
-  }
-  
-  .burger {
-    padding: 5px;
-    
-    .line {
-      width: 20px;
-      height: 2px;
-    }
-  }
-  
-  .mobileNavLink {
-    font-size: 20px;
-  }
-  
-  .mobileBookBtn {
-    padding: 12px 25px;
-    font-size: 11px;
-  }
-}
-
-@media (max-width: 400px) {
-  .container {
-    padding: 0 10px;
-  }
-  
-  .logoTextWrapper {
-    .logoMain { font-size: 14px; }
-    .logoSub { font-size: 8px; }
-  }
-  
-  .mobileNavLink {
-    font-size: 18px;
-  }
-  
-  .mobileBookBtn {
-    padding: 10px 20px;
-    font-size: 10px;
-  }
 }

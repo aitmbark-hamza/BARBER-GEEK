@@ -243,3 +243,11 @@ p {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-orange);
 }
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /* Hadu daroryin bach may-kounch s-scroll l-jennb */
+  overflow-x: hidden; 
+  position: relative;
+}

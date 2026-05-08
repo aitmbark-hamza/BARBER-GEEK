@@ -12,14 +12,15 @@ const Portfolio = () => {
     { id: 4, category: 'haircut', title: 'Modern taper style', image: 'imag4.png' },
     { id: 5, category: 'beard', title: 'Before / after grooming result', image: 'imag5.png' },
     { id: 6, category: 'style', title: 'Fresh and clean look', image: 'imag6.png' },
-    { 
-      id: 7, 
-      category: 'video', 
-      title: 'Featured Transformation', 
-      image: 'image1.png', // Thumbnail image
-      isVideo: true,
-      videoUrl: 'https://www.instagram.com/reel/DXnPDHYoKzD/?igsh=N2ozM3BlN3M4eTB4'
-    },
+    { id: 7, category: 'video', title: 'Video 1', image: 'video1.mp4', isVideo: true, videoUrl: 'https://www.instagram.com/reel/DXnPDHYoKzD/?igsh=N2ozM3BlN3M4eTB4' },
+    { id: 8, category: 'video', title: 'Video 2', image: 'video2.mp4', isVideo: true, videoUrl: '#' },
+    { id: 9, category: 'video', title: 'Video 3', image: 'video3.mp4', isVideo: true, videoUrl: '#' },
+    { id: 10, category: 'video', title: 'Video 4', image: 'video4.mp4', isVideo: true, videoUrl: '#' },
+    { id: 11, category: 'video', title: 'Video 5', image: 'video5.mp4', isVideo: true, videoUrl: '#' },
+    { id: 12, category: 'video', title: 'Video 6', image: 'video6.mp4', isVideo: true, videoUrl: '#' },
+    { id: 13, category: 'video', title: 'Video 7', image: 'video7.mp4', isVideo: true, videoUrl: '#' },
+    { id: 14, category: 'video', title: 'Video 8', image: 'video8.mp4', isVideo: true, videoUrl: '#' },
+    { id: 15, category: 'video', title: 'Video 9', image: 'video9.mp4', isVideo: true, videoUrl: '#' },
   ];
 
   const filters = ['all', 'haircut', 'beard', 'style', 'video'];
@@ -55,7 +56,11 @@ const Portfolio = () => {
           {filteredItems.map((item) => (
             <div key={item.id} className={styles.item} onClick={() => item.isVideo ? window.open(item.videoUrl, '_blank') : setSelectedImg(item.image)}>
               <div className={styles.imageWrapper}>
-                <img src={item.image} alt={item.title} className={styles.img} />
+                {item.isVideo ? (
+                  <video src={item.image} className={styles.img} muted loop playsInline preload="metadata" autoPlay />
+                ) : (
+                  <img src={item.image} alt={item.title} className={styles.img} />
+                )}
                 {item.isVideo && (
                   <div className={styles.videoBadge}>
                     <span className={styles.playIcon}>▶</span>
