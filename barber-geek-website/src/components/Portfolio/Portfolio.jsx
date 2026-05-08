@@ -78,7 +78,7 @@ const Portfolio = () => {
         <div className={styles.footer}>
           <p className={styles.footerText}>WANT TO SEE MORE TRANSFORMATIONS?</p>
           <a 
-            href="https://instagram.com" 
+            href="https://www.instagram.com/barber_geek0?igsh=MXZpZm5mbGpmcXp0bg==" 
             target="_blank" 
             rel="noopener noreferrer" 
             className={styles.instaButton}
