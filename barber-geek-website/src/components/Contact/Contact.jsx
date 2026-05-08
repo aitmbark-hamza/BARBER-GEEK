@@ -18,7 +18,8 @@ const Contact = () => {
 
   const socialLinks = [
     { name: 'Instagram', url: 'https://www.instagram.com/barber_geek0?igsh=MXZpZm5mbGpmcXp0bg==' },
-    { name: 'TikTok', url: 'https://www.tiktok.com/@barber.geek0?_r=1&_t=ZS-96CGQdPdWZW' }
+    { name: 'TikTok', url: 'https://www.tiktok.com/@barber.geek0?_r=1&_t=ZS-96CGQdPdWZW' },
+    { name: 'WhatsApp', url: 'https://wa.me/212663838127' }
   ];
 
   return (
