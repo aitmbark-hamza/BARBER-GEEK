@@ -1,4 +1,5 @@
 import { Camera } from 'lucide-react';
+import { FaInstagram } from 'react-icons/fa';
 import styles from './Team.module.css';
 
 const Team = () => {
@@ -69,9 +70,14 @@ const Team = () => {
                       <h3 className={styles.memberName}>{member.name}</h3>
                       <p className={styles.memberRole}>{member.role}</p>
                     </div>
-                    <div className={styles.instagramCircle}>
-                      <Camera size={16} strokeWidth={2.5} />
-                    </div>
+                    <a
+                      href="https://www.instagram.com/barber_geek0?igsh=MXZpZm5mbGpmcXp0bg=="
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.instagramIcon}
+                    >
+                      <FaInstagram />
+                    </a>
                   </div>
                 </div>
               </div>
