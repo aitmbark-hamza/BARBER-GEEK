@@ -1,17 +1,16 @@
 import { useState } from 'react';
+import { FaInstagram } from 'react-icons/fa';
 import styles from './Portfolio.module.css';
 
 const Portfolio = () => {
-  const [activeFilter, setActiveFilter] = useState('all');
+  const [activeFilter, setActiveFilter] = useState('haircut');
   const [selectedImg, setSelectedImg] = useState(null);
 
   const portfolioItems = [
     { id: 1, category: 'haircut', title: 'Clean fade transformation', image: 'image1.png' },
-    { id: 2, category: 'beard', title: 'Sharp beard line-up', image: 'imag2.png' },
-    { id: 3, category: 'style', title: 'Precision haircut finish', image: 'imag3.png' },
-    { id: 4, category: 'haircut', title: 'Modern taper style', image: 'imag4.png' },
-    { id: 5, category: 'beard', title: 'Before / after grooming result', image: 'imag5.png' },
-    { id: 6, category: 'style', title: 'Fresh and clean look', image: 'imag6.png' },
+     { id: 2, category: 'haircut', title: 'Clean fade transformation', image: 'image2.png' },
+      { id: 3, category: 'haircut', title: 'Clean fade transformation', image: 'image3.png' },
+    { id: 4, category: 'haircut', title: 'Modern taper style', image: 'image4.png' },
     { id: 7, category: 'video', title: 'Video 1', image: 'video1.mp4', isVideo: true, videoUrl: 'https://www.instagram.com/reel/DXnPDHYoKzD/?igsh=N2ozM3BlN3M4eTB4' },
     { id: 8, category: 'video', title: 'Video 2', image: 'video2.mp4', isVideo: true, videoUrl: '#' },
     { id: 9, category: 'video', title: 'Video 3', image: 'video3.mp4', isVideo: true, videoUrl: '#' },
@@ -23,7 +22,7 @@ const Portfolio = () => {
     { id: 15, category: 'video', title: 'Video 9', image: 'video9.mp4', isVideo: true, videoUrl: '#' },
   ];
 
-  const filters = ['all', 'haircut', 'beard', 'style', 'video'];
+  const filters = ['haircut', 'video'];
 
   const filteredItems = activeFilter === 'all' 
     ? portfolioItems 
@@ -77,13 +76,14 @@ const Portfolio = () => {
 
         <div className={styles.footer}>
           <p className={styles.footerText}>WANT TO SEE MORE TRANSFORMATIONS?</p>
-          <a 
-            href="https://www.instagram.com/barber_geek0?igsh=MXZpZm5mbGpmcXp0bg==" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href="https://www.instagram.com/barber_geek0?igsh=MXZpZm5mbGpmcXp0bg=="
+            target="_blank"
+            rel="noopener noreferrer"
             className={styles.instaButton}
           >
-            <span className={styles.instaIcon}>📸</span> FOLLOW ON INSTAGRAM
+            <FaInstagram className={styles.instaIcon} />
+            <span className={styles.buttonText}>FOLLOW ON INSTAGRAM</span>
           </a>
         </div>
       </div>

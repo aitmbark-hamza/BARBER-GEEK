@@ -1,8 +1,8 @@
 .portfolio {
   position: relative;
-  background-color: #020817; 
-  background-image: linear-gradient(rgba(2, 8, 23, 0.85), rgba(2, 8, 23, 0.85)), 
-                    url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1600');
+  background-color: #020817;
+  background-image: linear-gradient(rgba(2, 8, 23, 0.55), rgba(2, 8, 23, 0.55)),
+                    url('/backgraondimgportfolio.png');
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
@@ -104,40 +104,71 @@
 
 /* --- INSTAGRAM FOOTER --- */
 .footer {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 60px;
   padding-top: 40px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .footerText {
+  font-size: 14px;
+  letter-spacing: 2px;
   color: rgba(255, 255, 255, 0.5);
-  font-size: 10px;
-  letter-spacing: 3px;
-  font-weight: 700;
   margin-bottom: 20px;
+  font-weight: 600;
 }
 
 .instaButton {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  background: transparent;
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 15px 30px;
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 1px;
-  text-decoration: none;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 28px;
+  background-color: #ffffff;
+  color: #0066cc;
+  border: 2px solid #0066cc;
   border-radius: 50px;
-  transition: 0.3s ease;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  animation: slideUpFade 0.8s ease-out forwards;
+}
+
+.instaIcon {
+  font-size: 20px;
+  color: #0066cc;
+  transition: color 0.3s ease;
 }
 
 .instaButton:hover {
-  background: #fff;
-  color: #020817;
+  background-color: #0066cc;
+  color: #ffffff;
   transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 102, 204, 0.2);
+}
+
+.instaButton:hover .instaIcon {
+  color: #ffffff;
+}
+
+.instaButton:active {
+  transform: translateY(-1px);
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* --- LIGHTBOX (DIK LI KATHAL KBIRA) --- */
@@ -220,4 +251,10 @@
   /* Idrara sghira bzzaf (optional) */
   .filterBar { gap: 10px; }
   .filterBtn { font-size: 9px; }
+
+  .instaButton {
+    padding: 12px 24px;
+    font-size: 14px;
+    width: 90%;
+  }
 }

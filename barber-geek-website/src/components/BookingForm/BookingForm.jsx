@@ -12,6 +12,7 @@ const BookingForm = ({ closeBookingForm }) => {
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState(null);
 
   const services = [
     'Classic Fade',
@@ -38,30 +39,35 @@ const BookingForm = ({ closeBookingForm }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
 
-    // Create WhatsApp message
-    const message = `New Booking Request!%0A%0A` +
-      `Name: ${formData.name}%0A` +
-      `Phone: ${formData.phone}%0A` +
-      `Service: ${formData.service}%0A` +
-      `Date: ${formData.date}%0A` +
-      `Time: ${formData.time}%0A%0A` +
-      `Please confirm this appointment.`;
+    try {
+      const response = await fetch('/api/booking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
 
-    // Use environment variable for WhatsApp number
-    const whatsappUrl = `https://wa.me/${process.env.REACT_APP_WHATSAPP_NUMBER}?text=${message}`;
+      const data = await response.json();
 
-    // Open WhatsApp in new tab
-    window.open(whatsappUrl, '_blank');
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Failed to send booking request');
+      }
 
-    // Show success state
-    setTimeout(() => {
-      setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 1000);
+
+      // Auto-close after 3 seconds
+      setTimeout(() => {
+        handleClose();
+      }, 3000);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleClose = () => {
@@ -79,6 +85,7 @@ const BookingForm = ({ closeBookingForm }) => {
       time: ''
     });
     setIsSubmitted(false);
+    setError(null);
   };
 
   if (isSubmitted) {
@@ -209,6 +216,12 @@ const BookingForm = ({ closeBookingForm }) => {
               </select>
             </div>
           </div>
+
+          {error && (
+            <div className={styles.errorMessage}>
+              {error}
+            </div>
+          )}
 
           <div className={styles.formActions}>
             <button
