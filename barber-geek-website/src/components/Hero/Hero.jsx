@@ -6,9 +6,10 @@ const Hero = ({ openBookingForm }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
+    'backgraondhero1.png',
     'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=2000',
     'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=2000',
-    'https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2000'
+ 
   ];
 
   useEffect(() => {

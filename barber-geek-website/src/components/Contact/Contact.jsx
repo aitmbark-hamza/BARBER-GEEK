@@ -70,24 +70,24 @@ const Contact = () => {
       <div className={styles.footerContainer}>
         <div className={styles.footerGrid}>
           <div className={styles.footerCol}>
-            <span className={styles.colLabel}>NEED A PRIVATE SPACE?</span>
-            <h3 className={styles.colTitle}>RESERVE A TABLE? <br/>LET'S TALK US.</h3>
+            <span className={styles.colLabel}>READY FOR A FRESH LOOK?</span>
+            <h3 className={styles.colTitle}>BOOK YOUR <br/>APPOINTMENT</h3>
           </div>
 
           <div className={styles.footerCol}>
             <h4 className={styles.colHeader}>LOCATION</h4>
-            <a 
-              href="https://www.google.com/maps/search/?api=1&query=BARBER+GEEK,+6+Avenue+Mohamed+Balafrej,+Casablanca,+Morocco" 
-              target="_blank" 
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=BARBER+GEEK,+6+Avenue+Mohamed+Balafrej,+Casablanca,+Morocco"
+              target="_blank"
               rel="noopener noreferrer"
               className={styles.colContent}
               style={{ textDecoration: 'none', color: 'inherit' }}
             >
               {contactInfo[0].content}
             </a>
-            <a 
-              href="https://www.google.com/maps/search/?api=1&query=BARBER+GEEK,+6+Avenue+Mohamed+Balafrej,+Casablanca,+Morocco" 
-              target="_blank" 
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=BARBER+GEEK,+6+Avenue+Mohamed+Balafrej,+Casablanca,+Morocco"
+              target="_blank"
               rel="noopener noreferrer"
               className={styles.colContent}
               style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.85em', marginTop: '5px' }}
@@ -97,13 +97,9 @@ const Contact = () => {
           </div>
 
           <div className={styles.footerCol}>
-            <h4 className={styles.colHeader}>FOLLOW US</h4>
-            <div className={styles.socialList}>
-              {socialLinks.map((link, i) => (
-                <a key={i} href={link.url} target="_blank" rel="noopener noreferrer" className={styles.socialItem}>
-                  {link.name}
-                </a>
-              ))}
+            <h4 className={styles.colHeader}>HOURS</h4>
+            <div className={styles.colContent} style={{ whiteSpace: 'pre-line' }}>
+              {contactInfo[2].content}
             </div>
           </div>
 
@@ -112,6 +108,13 @@ const Contact = () => {
             <a href="tel:+212663838127" className={styles.colContent} style={{ textDecoration: 'none', color: 'inherit' }}>
               {contactInfo[1].content}
             </a>
+            <div className={styles.socialList} style={{ marginTop: '10px' }}>
+              {socialLinks.map((link, i) => (
+                <a key={i} href={link.url} target="_blank" rel="noopener noreferrer" className={styles.socialItem}>
+                  {link.name}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
