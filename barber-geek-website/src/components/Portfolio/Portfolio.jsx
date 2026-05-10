@@ -3,31 +3,31 @@ import { FaInstagram } from 'react-icons/fa';
 import styles from './Portfolio.module.css';
 
 const Portfolio = () => {
-  const [activeFilter, setActiveFilter] = useState('haircut');
+  const [activeFilter, setActiveFilter] = useState('image');
   const [selectedImg, setSelectedImg] = useState(null);
 
   const portfolioItems = [
-    { id: 1, category: 'haircut', title: 'Clean fade transformation', image: 'image1.png' },
-     { id: 2, category: 'haircut', title: 'Clean fade transformation', image: 'image2.png' },
-      { id: 3, category: 'haircut', title: 'Clean fade transformation', image: 'image3.png' },
-    { id: 4, category: 'haircut', title: 'Modern taper style', image: 'image4.png' },
-        { id: 4, category: 'haircut', title: 'Modern taper style', image: 'image5.png' },
-          { id: 4, category: 'haircut', title: 'Modern taper style', image: 'image6.png' },
-              { id: 4, category: 'haircut', title: 'Modern taper style', image: 'image7.png' },
-                  { id: 4, category: 'haircut', title: 'Modern taper style', image: 'image8.png' },
-                      { id: 4, category: 'haircut', title: 'Modern taper style', image: 'image9.png' },
-    { id: 7, category: 'video', title: 'Video 1', image: 'video1.mp4', isVideo: true, videoUrl: 'https://www.instagram.com/reel/DXnPDHYoKzD/?igsh=N2ozM3BlN3M4eTB4' },
-    { id: 8, category: 'video', title: 'Video 2', image: 'video2.mp4', isVideo: true, videoUrl: '#' },
-    { id: 9, category: 'video', title: 'Video 3', image: 'video3.mp4', isVideo: true, videoUrl: '#' },
-    { id: 10, category: 'video', title: 'Video 4', image: 'video4.mp4', isVideo: true, videoUrl: '#' },
-    { id: 11, category: 'video', title: 'Video 5', image: 'video5.mp4', isVideo: true, videoUrl: '#' },
-    { id: 12, category: 'video', title: 'Video 6', image: 'video6.mp4', isVideo: true, videoUrl: '#' },
-    { id: 13, category: 'video', title: 'Video 7', image: 'video7.mp4', isVideo: true, videoUrl: '#' },
-    { id: 14, category: 'video', title: 'Video 8', image: 'video8.mp4', isVideo: true, videoUrl: '#' },
-    { id: 15, category: 'video', title: 'Video 9', image: 'video9.mp4', isVideo: true, videoUrl: '#' },
+    { id: 1, category: 'image', title: 'Clean fade transformation', image: 'image1.png' },
+    { id: 2, category: 'image', title: 'Clean fade transformation', image: 'image2.png' },
+    { id: 3, category: 'image', title: 'Clean fade transformation', image: 'image3.png' },
+    { id: 4, category: 'image', title: 'Modern taper style', image: 'image4.png' },
+    { id: 5, category: 'image', title: 'Modern taper style', image: 'image5.png' },
+    { id: 6, category: 'image', title: 'Modern taper style', image: 'image6.png' },
+    { id: 7, category: 'image', title: 'Modern taper style', image: 'image7.png' },
+    { id: 8, category: 'image', title: 'Modern taper style', image: 'image8.png' },
+    { id: 9, category: 'image', title: 'Modern taper style', image: 'image9.png' },
+    { id: 10, category: 'video', title: 'Video 1', image: 'video1.mp4', isVideo: true, videoUrl: 'https://www.instagram.com/reel/DXnPDHYoKzD/?igsh=N2ozM3BlN3M4eTB4' },
+    { id: 11, category: 'video', title: 'Video 2', image: 'video2.mp4', isVideo: true, videoUrl: '#' },
+    { id: 12, category: 'video', title: 'Video 3', image: 'video3.mp4', isVideo: true, videoUrl: '#' },
+    { id: 13, category: 'video', title: 'Video 4', image: 'video4.mp4', isVideo: true, videoUrl: '#' },
+    { id: 14, category: 'video', title: 'Video 5', image: 'video5.mp4', isVideo: true, videoUrl: '#' },
+    { id: 15, category: 'video', title: 'Video 6', image: 'video6.mp4', isVideo: true, videoUrl: '#' },
+    { id: 16, category: 'video', title: 'Video 7', image: 'video7.mp4', isVideo: true, videoUrl: '#' },
+    { id: 17, category: 'video', title: 'Video 8', image: 'video8.mp4', isVideo: true, videoUrl: '#' },
+    { id: 18, category: 'video', title: 'Video 9', image: 'video9.mp4', isVideo: true, videoUrl: '#' },
   ];
 
-  const filters = ['haircut', 'video'];
+  const filters = ['image', 'video'];
 
   const filteredItems = activeFilter === 'all' 
     ? portfolioItems 

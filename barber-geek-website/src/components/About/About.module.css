@@ -1,10 +1,26 @@
 .about {
-  background-color: #ffffff; /* Clean White Only */
-  padding: 180px 0 100px 0;
-  margin-top: 60px; /* Top Margin as requested */
   position: relative;
-  overflow: visible; /* Prevents image clipping */
-  color: #020817;
+  overflow: hidden;
+  padding: 180px 0 100px 0;
+  margin-top: 60px;
+  color: #ffffff;
+}
+
+.bgVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.bgOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 8, 23, 0.4);
+  z-index: 1;
 }
 
 .container {
@@ -34,7 +50,7 @@
   left: 30px;
   font-size: clamp(200px, 30vw, 450px);
   font-weight: 900;
-  color: rgba(0, 102, 204, 0.04); /* Light Blue Tint */
+  color: rgba(255, 255, 255, 0.06);
   line-height: 1;
   z-index: 1;
   pointer-events: none;
@@ -60,14 +76,14 @@
 
 .blueStroke {
   color: transparent;
-  -webkit-text-stroke: 1.5px #0066cc; /* Electric Blue */
+  -webkit-text-stroke: 1.5px #4da6ff;
   position: relative;
 }
 
 .description {
   font-size: 18px;
   line-height: 1.8;
-  color: #475569;
+  color: rgba(255, 255, 255, 0.75);
   max-width: 500px;
   margin-bottom: 40px;
 }
@@ -85,8 +101,8 @@
   transition: 0.3s;
 }
 .primaryBtn:hover { background: #0066cc; transform: translateY(-3px); }
-.secondaryBtn { background: none; border: none; font-weight: 800; cursor: pointer; color: #020817; }
-.secondaryBtn:hover { color: #0066cc; }
+.secondaryBtn { background: none; border: none; font-weight: 800; cursor: pointer; color: #ffffff; }
+.secondaryBtn:hover { color: #4da6ff; }
 
 /* --- LAYERED IMAGES --- */
 .imageComplex { position: relative; width: 100%; }
@@ -114,8 +130,8 @@
   text-align: right;
   z-index: 6;
 }
-.sinceText { font-weight: 900; font-size: 24px; }
-.sinceYear { font-family: serif; font-size: 95px; color: #0066cc; margin-top: -15px; }
+.sinceText { font-weight: 900; font-size: 24px; color: #ffffff; }
+.sinceYear { font-family: serif; font-size: 95px; color: #4da6ff; margin-top: -15px; }
 
 /* --- VIDEO BOTTOM --- */
 .videoSection { width: 100%; display: flex; justify-content: center; }

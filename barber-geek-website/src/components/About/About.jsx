@@ -43,11 +43,23 @@ const About = () => {
 
   return (
     <section id="about" className={styles.about}>
+      {/* Background Video */}
+      <video
+        className={styles.bgVideo}
+        src="video5.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+      />
+      <div className={styles.bgOverlay}></div>
+
       <div className={styles.container}>
-        
+
         {/* Parallax Background Year */}
-        <div 
-          className={styles.bgNumber} 
+        <div
+          className={styles.bgNumber}
           style={{ transform: `translateY(${scrollY * 0.15}px)` }}
         >
           2026
@@ -65,8 +77,8 @@ const About = () => {
               With a 5.0 rating and strong client satisfaction, the shop focuses on clean work, professional tools, and a smooth experience for every client.
             </p>
             <div className={styles.btnGroup}>
-              <button className={styles.primaryBtn}>EXPLORE SERVICES</button>
-              <button className={styles.secondaryBtn}>OUR BARBERS →</button>
+              <button className={styles.primaryBtn} onClick={() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })}>EXPLORE SERVICES</button>
+              <button className={styles.secondaryBtn} onClick={() => document.getElementById('team').scrollIntoView({ behavior: 'smooth' })}>OUR BARBERS →</button>
             </div>
           </div>
 
@@ -90,7 +102,7 @@ const About = () => {
               style={{ transform: `translateY(-${scrollY * 0.05}px)` }}
             >
               <img 
-                src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=1000" 
+                src="/backgraondhero1.png" 
                 alt="Detail Work" 
                 className={styles.displayImg} 
               />
@@ -98,26 +110,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* Video Integration at Bottom */}
-        <div className={`${styles.videoSection} ${styles.animate}`}>
-          <div className={styles.videoWrapper} onClick={toggleVideo}>
-            <video 
-              ref={videoRef}
-              className={styles.mainVideo}
-              poster="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=2000"
-            >
-              <source src="/mainVideo.mp4" type="video/mp4" />
-            </video>
-            
-            {!isPlaying && (
-              <div className={styles.playOverlay}>
-                <div className={styles.playCircle}>
-                  <span className={styles.playText}>PLAY</span>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
       </div>
     </section>
   );
