@@ -1,6 +1,35 @@
 import { useState } from 'react';
 import styles from './BookingForm.module.css';
 
+/** International digits only (no +); same default as Contact wa.me link */
+const getWhatsAppBusinessDigits = () =>
+  String(import.meta.env.VITE_WHATSAPP_BUSINESS_NUMBER || '212663838127').replace(/\D/g, '');
+
+const buildWhatsAppBookingText = ({ name, phone, service, date, time }) => {
+  let dateLine = date;
+  if (date) {
+    const d = new Date(`${date}T12:00:00`);
+    if (!Number.isNaN(d.getTime())) {
+      dateLine = d.toLocaleDateString(undefined, {
+        weekday: 'short',
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+    }
+  }
+  return [
+    'Hello! I would like to book an appointment.',
+    '',
+    'Booking details:',
+    `Name: ${name}`,
+    `Phone: ${phone}`,
+    `Service: ${service}`,
+    `Date: ${dateLine}`,
+    `Time: ${time}`
+  ].join('\n');
+};
+
 const BookingForm = ({ closeBookingForm }) => {
   const [formData, setFormData] = useState({
     name: '',
@@ -39,35 +68,31 @@ const BookingForm = ({ closeBookingForm }) => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setError(null);
 
-    try {
-      const response = await fetch('/api/booking', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
-
-      const data = await response.json();
-
-      if (!response.ok || !data.success) {
-        throw new Error(data.error || 'Failed to send booking request');
-      }
-
-      setIsSubmitted(true);
-
-      // Auto-close after 3 seconds
-      setTimeout(() => {
-        handleClose();
-      }, 3000);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setIsSubmitting(false);
+    const digits = getWhatsAppBusinessDigits();
+    if (!digits) {
+      setError('WhatsApp number is not configured.');
+      return;
     }
+
+    setIsSubmitting(true);
+    const text = buildWhatsAppBookingText(formData);
+    const url = `https://wa.me/${digits}?text=${encodeURIComponent(text)}`;
+
+    const opened = window.open(url, '_blank', 'noopener,noreferrer');
+    if (!opened) {
+      window.location.href = url;
+    }
+
+    setIsSubmitted(true);
+    setIsSubmitting(false);
+
+    setTimeout(() => {
+      handleClose();
+    }, 3000);
   };
 
   const handleClose = () => {
@@ -94,9 +119,9 @@ const BookingForm = ({ closeBookingForm }) => {
         <div className={`${styles.modal} ${styles.successModal}`}>
           <div className={styles.successContent}>
             <div className={styles.successIcon}>✅</div>
-            <h3 className={styles.successTitle}>Booking Request Sent!</h3>
+            <h3 className={styles.successTitle}>Continue in WhatsApp</h3>
             <p className={styles.successText}>
-              Your booking request has been sent via WhatsApp. We'll confirm your appointment shortly.
+              WhatsApp should have opened with your details filled in. Send the message there to confirm your request. If nothing opened, allow pop-ups for this site or try again.
             </p>
             <button 
               onClick={handleClose}
