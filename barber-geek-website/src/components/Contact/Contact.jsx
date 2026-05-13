@@ -1,14 +1,55 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import styles from './Contact.module.css';
+
+const getWhatsAppBusinessDigits = () =>
+  String(import.meta.env.VITE_WHATSAPP_BUSINESS_NUMBER || '212663838127').replace(/\D/g, '');
+
+const buildContactWhatsAppText = ({ name, email, message }) =>
+  [
+    'Hello! Message from your website contact form.',
+    '',
+    `Name: ${name}`,
+    `Email: ${email}`,
+    message.trim() ? `Message:\n${message.trim()}` : 'Message: (none)'
+  ].join('\n');
 
 const Contact = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' });
+  const [contactError, setContactError] = useState(null);
+  const submitLockRef = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleContactChange = (e) => {
+    const { name, value } = e.target;
+    setContactForm((prev) => ({ ...prev, [name]: value }));
+    if (contactError) setContactError(null);
+  };
+
+  const handleContactSubmit = (e) => {
+    e.preventDefault();
+    if (submitLockRef.current) return;
+    setContactError(null);
+    const digits = getWhatsAppBusinessDigits();
+    if (!digits) {
+      setContactError('WhatsApp number is not configured.');
+      return;
+    }
+
+    submitLockRef.current = true;
+    const text = buildContactWhatsAppText(contactForm);
+    const url = `https://wa.me/${digits}?text=${encodeURIComponent(text)}`;
+    const opened = window.open(url, '_blank', 'noopener,noreferrer');
+    if (!opened) {
+      window.location.href = url;
+    }
+    submitLockRef.current = false;
+  };
 
   const contactInfo = [
     { title: 'Location', content: 'Barber Geek, Casablanca' },
@@ -48,20 +89,47 @@ const Contact = () => {
 
         <div className={styles.floatingCard}>
           <h2 className={styles.cardTitle}>HOW WE CAN HELP <br/>YOUR STYLE?</h2>
-          <form className={styles.contactForm} onSubmit={(e) => e.preventDefault()}>
+          <form className={styles.contactForm} onSubmit={handleContactSubmit}>
             <div className={styles.inputGroup}>
-              <input type="text" placeholder="Your name*" required />
+              <input
+                type="text"
+                name="name"
+                value={contactForm.name}
+                onChange={handleContactChange}
+                placeholder="Your name*"
+                required
+              />
               <span className={styles.inputIcon}>☺</span>
             </div>
             <div className={styles.inputGroup}>
-              <input type="email" placeholder="Your email address*" required />
+              <input
+                type="email"
+                name="email"
+                value={contactForm.email}
+                onChange={handleContactChange}
+                placeholder="Your email address*"
+                required
+              />
               <span className={styles.inputIcon}>✉</span>
             </div>
             <div className={styles.inputGroup}>
-              <textarea placeholder="Your message" rows="3"></textarea>
+              <textarea
+                name="message"
+                value={contactForm.message}
+                onChange={handleContactChange}
+                placeholder="Your message"
+                rows="3"
+              />
               <span className={styles.inputIcon}>💬</span>
             </div>
-            <button type="submit" className={styles.sendBtn}>SEND A MESSAGE</button>
+            {contactError && (
+              <p className={styles.contactFormError} role="alert">
+                {contactError}
+              </p>
+            )}
+            <button type="submit" className={styles.sendBtn}>
+              SEND A MESSAGE
+            </button>
           </form>
         </div>
       </div>

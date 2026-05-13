@@ -14,6 +14,7 @@ import styles from './App.module.css';
 
 function App() {
   const [isBookingFormOpen, setIsBookingFormOpen] = useState(false);
+  const [bookingInitialService, setBookingInitialService] = useState('');
 
   useEffect(() => {
     AOS.init({
@@ -24,13 +25,15 @@ function App() {
     });
   }, []);
 
-  const openBookingForm = () => {
+  const openBookingForm = (serviceTitle = '') => {
+    setBookingInitialService(typeof serviceTitle === 'string' ? serviceTitle : '');
     setIsBookingFormOpen(true);
     document.body.style.overflow = 'hidden';
   };
 
   const closeBookingForm = () => {
     setIsBookingFormOpen(false);
+    setBookingInitialService('');
     document.body.style.overflow = 'unset';
   };
 
@@ -39,13 +42,16 @@ function App() {
       <Navbar openBookingForm={openBookingForm} />
       <Hero openBookingForm={openBookingForm} />
       <About />
-      <Services />
+      <Services openBookingForm={openBookingForm} />
       <Portfolio />
       <Team />
       <Contact />
       
       {isBookingFormOpen && (
-        <BookingForm closeBookingForm={closeBookingForm} />
+        <BookingForm
+          closeBookingForm={closeBookingForm}
+          initialService={bookingInitialService}
+        />
       )}
     </div>
   );

@@ -109,6 +109,12 @@
   box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
+.contactFormError {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: #b42318;
+}
+
 /* --- FOOTER SECTION --- */
 .footerContainer {
   max-width: 1400px;
