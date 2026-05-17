@@ -4,7 +4,7 @@ import styles from './Portfolio.module.css';
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('image');
-  const [selectedImg, setSelectedImg] = useState(null);
+  const [selectedMedia, setSelectedMedia] = useState(null);
 
   const portfolioItems = [
     { id: 1, category: 'image', title: 'Clean fade transformation', image: 'image1.png' },
@@ -16,15 +16,15 @@ const Portfolio = () => {
     { id: 7, category: 'image', title: 'Modern taper style', image: 'image7.png' },
     { id: 8, category: 'image', title: 'Modern taper style', image: 'image8.png' },
     { id: 9, category: 'image', title: 'Modern taper style', image: 'image9.png' },
-    { id: 10, category: 'video', title: 'Video 1', image: 'video1.mp4', isVideo: true, videoUrl: 'https://www.instagram.com/reel/DXnPDHYoKzD/?igsh=N2ozM3BlN3M4eTB4' },
-    { id: 11, category: 'video', title: 'Video 2', image: 'video2.mp4', isVideo: true, videoUrl: '#' },
-    { id: 12, category: 'video', title: 'Video 3', image: 'video3.mp4', isVideo: true, videoUrl: '#' },
-    { id: 13, category: 'video', title: 'Video 4', image: 'video4.mp4', isVideo: true, videoUrl: '#' },
-    { id: 14, category: 'video', title: 'Video 5', image: 'video5.mp4', isVideo: true, videoUrl: '#' },
-    { id: 15, category: 'video', title: 'Video 6', image: 'video6.mp4', isVideo: true, videoUrl: '#' },
-    { id: 16, category: 'video', title: 'Video 7', image: 'video7.mp4', isVideo: true, videoUrl: '#' },
-    { id: 17, category: 'video', title: 'Video 8', image: 'video8.mp4', isVideo: true, videoUrl: '#' },
-    { id: 18, category: 'video', title: 'Video 9', image: 'video9.mp4', isVideo: true, videoUrl: '#' },
+    { id: 10, category: 'video', title: 'Video 1', image: 'video1.mp4', isVideo: true },
+    { id: 11, category: 'video', title: 'Video 2', image: 'video2.mp4', isVideo: true },
+    { id: 12, category: 'video', title: 'Video 3', image: 'video3.mp4', isVideo: true },
+    { id: 13, category: 'video', title: 'Video 4', image: 'video4.mp4', isVideo: true },
+    { id: 14, category: 'video', title: 'Video 5', image: 'video5.mp4', isVideo: true },
+    { id: 15, category: 'video', title: 'Video 6', image: 'video6.mp4', isVideo: true },
+    { id: 16, category: 'video', title: 'Video 7', image: 'video7.mp4', isVideo: true },
+    { id: 17, category: 'video', title: 'Video 8', image: 'video8.mp4', isVideo: true },
+    { id: 18, category: 'video', title: 'Video 9', image: 'video9.mp4', isVideo: true },
   ];
 
   const filters = ['image', 'video'];
@@ -58,7 +58,7 @@ const Portfolio = () => {
 
         <div className={styles.grid}>
           {filteredItems.map((item) => (
-            <div key={item.id} className={styles.item} onClick={() => item.isVideo ? window.open(item.videoUrl, '_blank') : setSelectedImg(item.image)}>
+            <div key={item.id} className={styles.item} onClick={() => setSelectedMedia({ type: item.isVideo ? 'video' : 'image', src: item.image })}>
               <div className={styles.imageWrapper}>
                 {item.isVideo ? (
                   <video src={item.image} className={styles.img} muted loop playsInline preload="metadata" autoPlay />
@@ -93,9 +93,20 @@ const Portfolio = () => {
         </div>
       </div>
 
-      {selectedImg && (
-        <div className={styles.lightbox} onClick={() => setSelectedImg(null)}>
-          <img src={selectedImg} className={styles.bigImg} alt="Enlarged" />
+      {selectedMedia && (
+        <div className={styles.lightbox} onClick={() => setSelectedMedia(null)}>
+          {selectedMedia.type === 'video' ? (
+            <video
+              src={selectedMedia.src}
+              className={styles.bigVideo}
+              controls
+              autoPlay
+              playsInline
+              onClick={(e) => e.stopPropagation()}
+            />
+          ) : (
+            <img src={selectedMedia.src} className={styles.bigImg} alt="Enlarged" />
+          )}
           <span className={styles.close}>CLOSE ×</span>
         </div>
       )}

@@ -212,7 +212,8 @@
   padding: 20px;
 }
 
-.bigImg {
+.bigImg,
+.bigVideo {
   max-width: 100%; 
   max-height: 85vh; 
   object-fit: contain;
